@@ -45,6 +45,7 @@ public class SimpleTest extends AsyncTestBase {
     private void testAll(Handler<AsyncResult<Void>> handler) {
         testPut("a", "1", (ar) ->
             testGet("a", "1", handler)
+
         );
     }
 
