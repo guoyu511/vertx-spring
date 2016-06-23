@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:vertx="http://www.vertx.io/schema/vertx-spring-web"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.vertx.io/schema/vertx-spring-web
+       http://www.vertx.io/schema/vertx-spring-web.xsd">
+
+    <context:component-scan base-package="io.vertx.ext.spring"></context:component-scan>
+
+    <vertx:router base-package="io.vertx.ext.spring"></vertx:router>
+
+    <vertx:http-client keep-alive="true" max-pool-size="128" pipelining="true"/>
+
+    <!--
+    data-source-ref should be a bean instance of DataSource
+    <vertx:jdbc id="jdbcResource" data-source-ref="dataSourceId"></vertx:jdbc>
+    -->
+
+    <vertx:redis id="testRedis" host="127.0.0.1" port="6379"></vertx:redis>
+
+
+</beans>

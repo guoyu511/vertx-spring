@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.vertx.io/schema/vertx-spring-web"
+            targetNamespace="http://www.vertx.io/schema/vertx-spring-web"
+            elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:element name="router">
+        <xsd:complexType>
+            <xsd:attribute name="base-package" type="xsd:string"
+                           use="required">
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="http-client">
+        <xsd:complexType>
+            <xsd:attribute name="keep-alive" type="xsd:boolean" default="true">
+            </xsd:attribute>
+            <xsd:attribute name="max-pool-size" type="xsd:int" default="32">
+            </xsd:attribute>
+            <xsd:attribute name="pipelining" type="xsd:boolean" default="true">
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="jdbc">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" default="jdbcclient">
+            </xsd:attribute>
+            <xsd:attribute name="data-source-ref" type="xsd:string" use="required">
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="redis">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" default="redisclient">
+            </xsd:attribute>
+            <xsd:attribute name="host" type="xsd:string" use="required">
+            </xsd:attribute>
+            <xsd:attribute name="port" type="xsd:string" use="required">
+            </xsd:attribute>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
