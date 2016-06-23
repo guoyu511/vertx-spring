@@ -43,12 +43,12 @@ public class UserRouter {
 
     @RouterHandler(method = HttpMethod.GET, value = "/") // use non-blocking handler
     public void getUser(RoutingContext context) {
-        // doth with service then write to response, shuld be asnyc
+        // dosth with then write to response, shuld be asnyc
     }
     
     @RouterHandler(method = HttpMethod.GET, value = "/", blocking = true) // use bolcking handler
     public void getUserSync(RoutingContext context) {
-        // doth with service then write to response, may be sync
+        // dosth with then write to response, may be sync
     }
    
     
