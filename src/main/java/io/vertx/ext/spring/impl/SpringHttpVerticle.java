@@ -2,10 +2,9 @@ package io.vertx.ext.spring.impl;
 
 import org.springframework.context.ApplicationContext;
 
-import java.util.function.Supplier;
-
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.http.HttpServerOptions;
+import io.vertx.ext.spring.ContextFactory;
 import io.vertx.ext.web.Router;
 
 /**
@@ -13,14 +12,14 @@ import io.vertx.ext.web.Router;
  */
 public class SpringHttpVerticle extends AbstractVerticle {
 
-    private Supplier<ApplicationContext> contextSupplier;
+    private ContextFactory factory;
 
     private ApplicationContext applicationContext;
 
     private HttpServerOptions options;
 
-    public SpringHttpVerticle(Supplier<ApplicationContext> contextSupplier, HttpServerOptions options) {
-        this.contextSupplier = contextSupplier;
+    public SpringHttpVerticle(ContextFactory factory, HttpServerOptions options) {
+        this.factory = factory;
         this.options = options;
     }
 
@@ -28,7 +27,7 @@ public class SpringHttpVerticle extends AbstractVerticle {
     public void start() throws Exception {
         super.start();
         VertxHolder.set(getVertx());
-        applicationContext = contextSupplier.get();
+        applicationContext = factory.create();
         Router router = applicationContext.getBean(Router.class);
         vertx.createHttpServer(options)
                 .requestHandler(router::accept)

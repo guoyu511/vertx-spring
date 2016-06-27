@@ -1,9 +1,6 @@
 package io.vertx.ext.spring;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.function.Supplier;
 
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
@@ -22,12 +19,12 @@ public interface VertxSpring {
         deploy(vertx, () -> new ClassPathXmlApplicationContext(configurationFile), options, handler);
     }
 
-    static void deploy(Vertx vertx, Supplier<ApplicationContext> contextSupplier, HttpServerOptions options) {
-        deploy(vertx, contextSupplier, options, (ar) -> {});
+    static void deploy(Vertx vertx, ContextFactory factory, HttpServerOptions options) {
+        deploy(vertx, factory, options, (ar) -> {});
     }
 
-    static void deploy(Vertx vertx, Supplier<ApplicationContext> contextSupplier, HttpServerOptions options, Handler<AsyncResult<String>> handler) {
-        vertx.deployVerticle(new SpringHttpVerticle(contextSupplier, options), handler);
+    static void deploy(Vertx vertx, ContextFactory factory, HttpServerOptions options, Handler<AsyncResult<String>> handler) {
+        vertx.deployVerticle(new SpringHttpVerticle(factory, options), handler);
     }
 
 }
