@@ -58,6 +58,15 @@ public class UserRouter {
 [Following sample code for more information](https://github.com/guoyu511/vertx-spring-web/blob/master/src/test/java/io/vertx/ext/spring/TestRouter.java)
 
 
-## Launcher your application
+## Launch your application
 
+Use VertxSpring.deploy() to deploy verticle on vertx.
 
+```
+VertxSpring.deploy(vertx,
+        () -> new ClasspathApplicatioContext("context.xml"),
+        new HttpServerOptions()
+            .setPort(8080),
+        future.completer());
+```
+It will create verticle instance with one application context provided.

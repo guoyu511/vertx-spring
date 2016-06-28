@@ -4,6 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.InvalidPropertyException;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -11,17 +12,16 @@ import javax.sql.DataSource;
 
 import io.vertx.core.Vertx;
 import io.vertx.ext.jdbc.JDBCClient;
-import io.vertx.ext.spring.impl.VertxHolder;
 
 public class JdbcClientFactory implements InitializingBean, ApplicationContextAware, FactoryBean<JDBCClient> {
+
+    @Autowired Vertx vertx;
 
     private String dataSourceRef;
 
     private DataSource dataSource;
 
     private ApplicationContext applicationContext;
-
-    private Vertx vertx;
 
     public void setDataSourceRef(String dataSourceRef) {
         this.dataSourceRef = dataSourceRef;
@@ -49,7 +49,6 @@ public class JdbcClientFactory implements InitializingBean, ApplicationContextAw
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        vertx = VertxHolder.get();
         Object bean = applicationContext.getBean(dataSourceRef);
         if (!DataSource.class.isInstance(bean)) {
             throw new InvalidPropertyException(DataSource.class, "data-source-ref", "Invalid DataSource");

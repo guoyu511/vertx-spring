@@ -3,6 +3,7 @@
             xmlns="http://www.vertx.io/schema/vertx-spring-web"
             targetNamespace="http://www.vertx.io/schema/vertx-spring-web"
             elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:element name="vertx"></xsd:element>
     <xsd:element name="router">
         <xsd:complexType>
             <xsd:attribute name="base-package" type="xsd:string"

@@ -1,20 +1,19 @@
 package io.vertx.ext.spring.impl.factory;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import io.vertx.core.Vertx;
-import io.vertx.ext.spring.impl.VertxHolder;
 import io.vertx.redis.RedisClient;
 import io.vertx.redis.RedisOptions;
 
-public class RedisClientFactory implements InitializingBean, FactoryBean<RedisClient> {
+public class RedisClientFactory implements FactoryBean<RedisClient> {
+
+    @Autowired Vertx vertx;
 
     private String host;
 
     private int port;
-
-    private Vertx vertx;
 
     public void setHost(String host) {
         this.host = host;
@@ -43,8 +42,4 @@ public class RedisClientFactory implements InitializingBean, FactoryBean<RedisCl
         return true;
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        vertx = VertxHolder.get();
-    }
 }

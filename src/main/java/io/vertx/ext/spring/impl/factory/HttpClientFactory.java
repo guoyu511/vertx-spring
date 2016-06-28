@@ -1,22 +1,21 @@
 package io.vertx.ext.spring.impl.factory;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpClient;
 import io.vertx.core.http.HttpClientOptions;
-import io.vertx.ext.spring.impl.VertxHolder;
 
-public class HttpClientFactory implements InitializingBean, FactoryBean<HttpClient> {
+public class HttpClientFactory implements FactoryBean<HttpClient> {
+
+    @Autowired Vertx vertx;
 
     private boolean keepAlive;
 
     private int maxPoolSize;
 
     private boolean pipelining;
-
-    private Vertx vertx;
 
     public void setKeepAlive(boolean keepAlive) {
         this.keepAlive = keepAlive;
@@ -49,8 +48,4 @@ public class HttpClientFactory implements InitializingBean, FactoryBean<HttpClie
         return true;
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        vertx = VertxHolder.get();
-    }
 }

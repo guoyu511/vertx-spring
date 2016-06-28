@@ -11,15 +11,13 @@
 
     <context:component-scan base-package="io.vertx.ext.spring"></context:component-scan>
 
+    <vertx:vertx/>
     <vertx:router base-package="io.vertx.ext.spring"></vertx:router>
-
     <vertx:http-client keep-alive="true" max-pool-size="128" pipelining="true"/>
-
     <!--
     data-source-ref should be a bean instance of DataSource
     <vertx:jdbc id="jdbcResource" data-source-ref="dataSourceId"></vertx:jdbc>
     -->
-
     <vertx:redis id="testRedis" host="127.0.0.1" port="6379"></vertx:redis>
 
 

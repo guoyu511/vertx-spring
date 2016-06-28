@@ -33,7 +33,7 @@ public class RouterParser implements BeanDefinitionParser {
         GenericBeanDefinition def = new GenericBeanDefinition();
         def.setBeanClass(RouterFactory.class);
         registry.registerBeanDefinition("vertx-spring-web-router", def);
-        return null;
+        return def;
     }
 
 }

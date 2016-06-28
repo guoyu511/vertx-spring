@@ -26,7 +26,7 @@ public class HttpClientParser implements BeanDefinitionParser {
         prop.addPropertyValue("pipelining", element.getAttribute("pipelining"));
         def.setPropertyValues(prop);
         registry.registerBeanDefinition("httpClient", def);
-        return null;
+        return def;
     }
 
 }

@@ -26,7 +26,7 @@ public class RedisClientParser implements BeanDefinitionParser {
         prop.addPropertyValue("port", element.getAttribute("port"));
         def.setPropertyValues(prop);
         registry.registerBeanDefinition(id, def);
-        return null;
+        return def;
     }
 
 }
