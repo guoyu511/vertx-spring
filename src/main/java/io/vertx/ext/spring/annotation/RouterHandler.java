@@ -16,6 +16,6 @@ public @interface RouterHandler {
 
     String value();
 
-    boolean worker() default true;
+    boolean worker() default false;
 
 }

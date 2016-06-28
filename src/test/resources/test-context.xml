@@ -20,5 +20,4 @@
     -->
     <vertx:redis id="testRedis" host="127.0.0.1" port="6379"></vertx:redis>
 
-
 </beans>
