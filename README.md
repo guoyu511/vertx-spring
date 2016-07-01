@@ -13,4 +13,4 @@
 
 ## Documentation
 
-English | [中文](https://github.com/guoyu511/vertx-spring-web/wiki/%E9%A6%96%E9%A1%B5)
+English | [中文](https://github.com/guoyu511/vertx-spring-web/wiki/%E4%BD%BF%E7%94%A8%E6%89%8B%E5%86%8C)
