@@ -2,71 +2,15 @@
 
 ## Overview
 
+`vertx-spring-web` is a vertx module. The goal of `vertx-spring-web` to integrate vertx-web and spring framework together. 
 
-## How to use
+### Features
 
-#### Configure your spring xml
+1. Annotation-driven web router handlers
+1. Full support for non-blocking I/O model with vertx
+1. Full support for spring IOC
+1. Auto inject frequently-used vertx I/O client (Vertx instance, RedisClient, JDBCClient etc) with spring beanFactory
 
-Add vertx namespace to your context xml and add router tag with special package name.
+## Documentation
 
-```
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:vertx="http://www.vertx.io/schema/vertx-spring-web"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-       http://www.springframework.org/schema/context
-	   http://www.springframework.org/schema/context/spring-context-4.0.xsd
-       http://www.vertx.io/schema/vertx-spring-web
-       http://www.vertx.io/schema/vertx-spring-web.xsd">  
-         
-.....
-
-<vertx:router base-package="[your package name to search routers]"></vertx:router>
-```
-
-#### Annotation based routers
-
-1. Add @VertxRouter annotation on each handler classes
-1. Add @RouterHandler annotation on each handler method
-
-```
-@VertxRouter
-public class UserRouter {
-
-...
-
-    @Autowired UserService service;
-
-...
-
-    @RouterHandler(method = HttpMethod.GET, value = "/") // use non-blocking handler
-    public void getUser(RoutingContext context) {
-        // dosth with then write to response, shuld be asnyc
-    }
-    
-    @RouterHandler(method = HttpMethod.GET, value = "/", blocking = true) // use bolcking handler
-    public void getUserSync(RoutingContext context) {
-        // dosth with then write to response, may be sync
-    }
-   
-    
-}
-```
-
-[Following sample code for more information](https://github.com/guoyu511/vertx-spring-web/blob/master/src/test/java/io/vertx/ext/spring/TestRouter.java)
-
-
-## Launch your application
-
-Use VertxSpring.deploy() to deploy verticle on vertx.
-
-```
-VertxSpring.deploy(vertx,
-        () -> new ClasspathApplicatioContext("context.xml"),
-        new HttpServerOptions()
-            .setPort(8080),
-        future.completer());
-```
-It will create verticle instance with one application context provided.
+English | [中文](https://github.com/guoyu511/vertx-spring-web/wiki/%E9%A6%96%E9%A1%B5)
