@@ -12,10 +12,10 @@ import io.vertx.core.http.HttpMethod;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RouterHandler {
 
-    HttpMethod method() default HttpMethod.GET;
+  HttpMethod method() default HttpMethod.GET;
 
-    String value();
+  String value();
 
-    boolean worker() default false;
+  boolean worker() default false;
 
 }

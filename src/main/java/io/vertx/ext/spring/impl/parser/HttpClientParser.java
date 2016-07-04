@@ -15,18 +15,18 @@ import io.vertx.ext.spring.impl.factory.HttpClientFactory;
  */
 public class HttpClientParser implements BeanDefinitionParser {
 
-    @Override
-    public BeanDefinition parse(Element element, ParserContext parserContext) {
-        BeanDefinitionRegistry registry = parserContext.getRegistry();
-        GenericBeanDefinition def = new GenericBeanDefinition();
-        MutablePropertyValues prop = new MutablePropertyValues();
-        def.setBeanClass(HttpClientFactory.class);
-        prop.addPropertyValue("keepAlive", element.getAttribute("keep-alive"));
-        prop.addPropertyValue("maxPoolSize", element.getAttribute("max-pool-size"));
-        prop.addPropertyValue("pipelining", element.getAttribute("pipelining"));
-        def.setPropertyValues(prop);
-        registry.registerBeanDefinition("httpClient", def);
-        return def;
-    }
+  @Override
+  public BeanDefinition parse(Element element, ParserContext parserContext) {
+    BeanDefinitionRegistry registry = parserContext.getRegistry();
+    GenericBeanDefinition def = new GenericBeanDefinition();
+    MutablePropertyValues prop = new MutablePropertyValues();
+    def.setBeanClass(HttpClientFactory.class);
+    prop.addPropertyValue("keepAlive", element.getAttribute("keep-alive"));
+    prop.addPropertyValue("maxPoolSize", element.getAttribute("max-pool-size"));
+    prop.addPropertyValue("pipelining", element.getAttribute("pipelining"));
+    def.setPropertyValues(prop);
+    registry.registerBeanDefinition("httpClient", def);
+    return def;
+  }
 
 }

@@ -10,13 +10,13 @@ import io.vertx.ext.spring.impl.parser.VertxParser;
 
 public class NamespaceHandler extends NamespaceHandlerSupport {
 
-    @Override
-    public void init() {
-        registerBeanDefinitionParser("vertx", new VertxParser());
-        registerBeanDefinitionParser("router", new RouterParser());
-        registerBeanDefinitionParser("http-client", new HttpClientParser());
-        registerBeanDefinitionParser("jdbc", new JdbcParser());
-        registerBeanDefinitionParser("redis", new RedisClientParser());
-    }
+  @Override
+  public void init() {
+    registerBeanDefinitionParser("vertx", new VertxParser());
+    registerBeanDefinitionParser("router", new RouterParser());
+    registerBeanDefinitionParser("http-client", new HttpClientParser());
+    registerBeanDefinitionParser("jdbc", new JdbcParser());
+    registerBeanDefinitionParser("redis", new RedisClientParser());
+  }
 
 }

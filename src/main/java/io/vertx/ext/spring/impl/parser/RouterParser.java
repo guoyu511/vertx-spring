@@ -20,20 +20,20 @@ import io.vertx.ext.spring.impl.factory.RouterFactory;
  */
 public class RouterParser implements BeanDefinitionParser {
 
-    @Override
-    public BeanDefinition parse(Element element, ParserContext parserContext) {
-        BeanDefinitionRegistry registry = parserContext.getRegistry();
-        ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(parserContext.getRegistry(), false);
-        BeanDefinitionDefaults defaults = new BeanDefinitionDefaults();
-        defaults.setLazyInit(true);
-        scanner.setBeanDefinitionDefaults(defaults);
-        String basePackage = element.getAttribute("base-package");
-        scanner.addIncludeFilter(new AnnotationTypeFilter(VertxRouter.class));
-        scanner.scan(StringUtils.tokenizeToStringArray(basePackage, ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS));
-        GenericBeanDefinition def = new GenericBeanDefinition();
-        def.setBeanClass(RouterFactory.class);
-        registry.registerBeanDefinition("vertx-spring-web-router", def);
-        return def;
-    }
+  @Override
+  public BeanDefinition parse(Element element, ParserContext parserContext) {
+    BeanDefinitionRegistry registry = parserContext.getRegistry();
+    ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(parserContext.getRegistry(), false);
+    BeanDefinitionDefaults defaults = new BeanDefinitionDefaults();
+    defaults.setLazyInit(true);
+    scanner.setBeanDefinitionDefaults(defaults);
+    String basePackage = element.getAttribute("base-package");
+    scanner.addIncludeFilter(new AnnotationTypeFilter(VertxRouter.class));
+    scanner.scan(StringUtils.tokenizeToStringArray(basePackage, ConfigurableApplicationContext.CONFIG_LOCATION_DELIMITERS));
+    GenericBeanDefinition def = new GenericBeanDefinition();
+    def.setBeanClass(RouterFactory.class);
+    registry.registerBeanDefinition("vertx-spring-web-router", def);
+    return def;
+  }
 
 }

@@ -10,18 +10,18 @@ import io.vertx.ext.spring.impl.VertxHolder;
  */
 public class VertxFactory implements FactoryBean<Vertx> {
 
-    @Override
-    public Vertx getObject() throws Exception {
-        return VertxHolder.get();
-    }
+  @Override
+  public Vertx getObject() throws Exception {
+    return VertxHolder.get();
+  }
 
-    @Override
-    public Class<?> getObjectType() {
-        return Vertx.class;
-    }
+  @Override
+  public Class<?> getObjectType() {
+    return Vertx.class;
+  }
 
-    @Override
-    public boolean isSingleton() {
-        return true;
-    }
+  @Override
+  public boolean isSingleton() {
+    return true;
+  }
 }

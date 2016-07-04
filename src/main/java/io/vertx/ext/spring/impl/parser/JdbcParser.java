@@ -15,17 +15,17 @@ import io.vertx.ext.spring.impl.factory.JdbcClientFactory;
  */
 public class JdbcParser implements BeanDefinitionParser {
 
-    @Override
-    public BeanDefinition parse(Element element, ParserContext parserContext) {
-        BeanDefinitionRegistry registry = parserContext.getRegistry();
-        GenericBeanDefinition def = new GenericBeanDefinition();
-        MutablePropertyValues prop = new MutablePropertyValues();
-        def.setBeanClass(JdbcClientFactory.class);
-        String id = element.getAttribute("id");
-        prop.addPropertyValue("dataSourceRef", element.getAttribute("data-source-ref"));
-        def.setPropertyValues(prop);
-        registry.registerBeanDefinition(id, def);
-        return def;
-    }
+  @Override
+  public BeanDefinition parse(Element element, ParserContext parserContext) {
+    BeanDefinitionRegistry registry = parserContext.getRegistry();
+    GenericBeanDefinition def = new GenericBeanDefinition();
+    MutablePropertyValues prop = new MutablePropertyValues();
+    def.setBeanClass(JdbcClientFactory.class);
+    String id = element.getAttribute("id");
+    prop.addPropertyValue("dataSourceRef", element.getAttribute("data-source-ref"));
+    def.setPropertyValues(prop);
+    registry.registerBeanDefinition(id, def);
+    return def;
+  }
 
 }

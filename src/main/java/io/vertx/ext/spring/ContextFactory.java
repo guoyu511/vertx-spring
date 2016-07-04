@@ -7,6 +7,6 @@ import org.springframework.context.ApplicationContext;
  */
 public interface ContextFactory {
 
-    ApplicationContext create();
+  ApplicationContext create();
 
 }
