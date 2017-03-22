@@ -14,7 +14,7 @@
     <name>Spring integrate with vertx-web</name>
 
     <properties>
-        <stack.version>3.2.1</stack.version>
+        <stack.version>3.4.0</stack.version>
         <junit.version>4.11</junit.version>
         <spring.version>4.1.0.RELEASE</spring.version>
     </properties>
