@@ -13,6 +13,7 @@ import io.vertx.ext.spring.impl.factory.VertxFactory;
  * Created by guoyu on 16/6/28.
  */
 public class VertxParser implements BeanDefinitionParser {
+
   @Override
   public BeanDefinition parse(Element element, ParserContext parserContext) {
     BeanDefinitionRegistry registry = parserContext.getRegistry();
